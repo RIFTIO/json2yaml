@@ -1,9 +1,7 @@
 (function () {
   "use strict";
 
-  var typeOf = require('remedial').typeOf,
-    maxText = 60,
-    wrap = require('wordwrap')(maxText);
+  var typeOf = require('remedial').typeOf
 
   function stringify(data) {
     var handlers, indentLevel = '';
@@ -26,10 +24,10 @@
       },
       "string": function (x) {
         var output = '|';
-        if (x.length <= maxText && x.indexOf('\n') === -1) {
+        if (x.indexOf('\n') === -1) {
           return JSON.stringify(x);
         }
-        var text = wrap(x).split(/\\n|\n/);
+        var text = x.split(/\\n|\n/)
         indentLevel = indentLevel.replace(/$/, '  ');
         text.forEach(function (y) {
           output += '\n' + indentLevel + y;
